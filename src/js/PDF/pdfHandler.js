@@ -4,8 +4,7 @@ import {Document, Page, pdfjs} from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 export default function PDFCanvas(props) {
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+    const [numPages, setNumPages] = useState(0);
 
     function onDocumentLoadSuccess({numPages}) {
         setNumPages(numPages);
@@ -13,12 +12,21 @@ export default function PDFCanvas(props) {
 
     return (
         <div>
-            <p>Page {pageNumber} of {numPages}</p>
             <Document
                 file={props.route.url}
                 onLoadSuccess={onDocumentLoadSuccess}
             >
-                <Page pageNumber={pageNumber}/>
+                {
+                    Array.from(
+                        new Array(numPages),
+                        (el, index) => (
+                            <Page
+                                key={`page_${index + 1}`}
+                                pageNumber={index + 1}
+                            />
+                        ),
+                    )
+                }
             </Document>
         </div>
     );
