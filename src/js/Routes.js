@@ -92,7 +92,7 @@ export default class Board extends React.Component {
             return (
                 <div className="wrapper">
                     <button className="back" onClick={this.handleClick}>Go Back</button>
-                    <h1>Nothing to see here</h1>
+                    <h1>{allRoutes[0].name}</h1>
                     <PDFCanvas route={allRoutes[0]}/>
                 </div>
             )
