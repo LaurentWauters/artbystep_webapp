@@ -47,6 +47,7 @@ body {
 
 .wrapper .routes-list {
   margin-left: -50px;
+  display: grid;
 }
 
 .wrapper .routes-list ol {
@@ -55,16 +56,25 @@ body {
 
 .wrapper .routes-list ul {
   list-style-type: none;
-  position: relative;
+  /* position: relative; */
   font-size: 1.5rem;
   padding: 15px;
   margin-bottom: 15px;
   background-color: aliceblue;
-  color: aqua;
 }
 
-.wrapper .routes-list button {
+.card-img-overlay {
+  background-color: rgba(20, 20, 20, 0.3);
+}
+
+
+.card {
+  background-color: aliceblue;
+  margin-bottom: 20px;
+}
+
+/* .wrapper .routes-list button {
   width: 100%;
   height: auto;
-}
+} */
 

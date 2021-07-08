@@ -7,6 +7,15 @@ export const routes = [
         distance: "2",
         amountGalleries: "6",
         amountMusea: "2",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "test",
     },    
     {
         id: '1',
@@ -16,6 +25,15 @@ export const routes = [
         distance: "1.7",
         amountGalleries: "7",
         amountMusea: "1",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },
     {
         id: '2',
@@ -25,6 +43,15 @@ export const routes = [
         distance: "3",
         amountGalleries: "10",
         amountMusea: "1",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },
     {
         id: '3',
@@ -34,6 +61,15 @@ export const routes = [
         distance: "3.4",
         amountGalleries: "6",
         amountMusea: "1",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },    
     {
         id: '4',
@@ -43,6 +79,15 @@ export const routes = [
         distance: "1.5",
         amountGalleries: "7",
         amountMusea: "2",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },
     {
         id: '5',
@@ -52,6 +97,15 @@ export const routes = [
         distance: "1",
         amountGalleries: "5",
         amountMusea: "1",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },    
     {
         id: '6',
@@ -61,6 +115,15 @@ export const routes = [
         distance: "2.2",
         amountGalleries: "6",
         amountMusea: "1",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },
     {
         id: '7',
@@ -70,5 +133,14 @@ export const routes = [
         distance: "1.2",
         amountGalleries: "5",
         amountMusea: "1",
+        galleries: [
+            {
+                name: "f",
+                startTime: "",
+                finishTime: "",
+            }
+        ],
+        image: "",
+        desc: "",
     },
 ]
