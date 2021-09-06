@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+/src/js/data.js
+/src/js/dbconn/mockAccounts.js
+
 # testing
 /coverage
 
