@@ -55,6 +55,7 @@ export default class Board extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    //activates when clicking on a route
     handleClick(i) {
         const displayRoutes = this.state.displayRoutes;
         const displayFile = this.state.displayFile;
@@ -77,12 +78,26 @@ export default class Board extends React.Component {
         }
     }
 
+    //input textbox fill
     handleChange(event) {
         this.setState({
             value: event.target.value
         });
     }
 
+    //checks if the date of purchase is still within the 31days time period
+    checkIfValid(user) {
+        const startDate = user.startDate;
+        const now = Date.now();
+        const dateDifference = now - startDate
+        //check if more than 31 days (in milliseconds)
+        if (dateDifference > 2678400000) {
+            return false;
+        }
+        return true;
+    }
+
+    //checks if the user code is in our DB
     handleSubmit(event) {
         const loginscreen = this.state.loginscreen;
         const displayRoutes = this.state.displayRoutes;
@@ -92,18 +107,22 @@ export default class Board extends React.Component {
 
         mockAccounts.forEach((x) => {
             if(x.id === code) {
-                this.setState({
-                    loginscreen: !loginscreen,
-                    displayRoutes: !displayRoutes,
-                    activeUser: x,
-                    languages: x.lang,
-                    routes: x.routes,
-                })
-
+                if(this.checkIfValid(x)) {
+                    this.setState({
+                        loginscreen: !loginscreen,
+                        displayRoutes: !displayRoutes,
+                        activeUser: x,
+                        languages: x.lang,
+                        routes: x.routes,
+                    })
+                } else {
+                    alert("this code is not valid anymore");
+                }
             } else {
                 console.log('error');
             }
         })
+
 
         event.preventDefault();
     }
@@ -113,36 +132,11 @@ export default class Board extends React.Component {
     }
 
 
-    // getLanguages(params) {
-    //     const languages = [];
-    //     const uncutLang = params.get('lng');
-
-    //     if (uncutLang.includes('en')){
-    //         languages.push('en')
-    //     } if (uncutLang.includes('fr')) {
-    //         languages.push('fr')
-    //     } if (uncutLang.includes('nl')) {
-    //         languages.push('nl')
-    //     }
-
-    //     return languages;
-    // }
-
     getLanguagesFromAccount(param) {
         const languages = param.lang;
         this.setState({languages: languages});
     };
 
-    // getRoutes(params) {
-    //     const selectRoutes = [];
-    //     const uncutString = params.get('rt');
-
-    //     for (let c of uncutString) {
-    //         selectRoutes.push(routes[parseInt(c)]);
-    //     }
-
-    //     return selectRoutes;
-    // }
 
     getRoutesFromAccount(param) {
         const selectRoutes = param.routes;
@@ -180,9 +174,6 @@ export default class Board extends React.Component {
             const image = x.image;
 
             return (
-                // <ul key={x.id}>
-                //     <button onClick={this.handleClick}>{desc}</button>
-                // </ul>
                 <Col lg={4} md={4} sm={12} key={x.id}>
                     <Card value={x}className="text-black" onClick={this.handleClick.bind(this, x)} onMouseOver={() => this.handleOverlay()} onMouseLeave={() => this.handleOverlay()}>
                       <Card.Img src={image} variant="top" alt="Card image" />
@@ -199,6 +190,7 @@ export default class Board extends React.Component {
             )
         })
         if (this.state.loginscreen) {
+            //Login Screen
             return (
                 <form>
                     <h1>Enter code</h1>
@@ -208,6 +200,7 @@ export default class Board extends React.Component {
             )
         }
         else if (this.state.displayRoutes) {
+            //Render of all the routes
             return (
                 <div className="wrapper">           
                     <h1>Your routes:</h1>
@@ -219,7 +212,7 @@ export default class Board extends React.Component {
                 </div>
             )
         } else if (this.state.displayFile){
- //           console.log(selectRoutes[this.state.fileToDisplay]);
+            //Render of the PDF's
             const num = selectRoutes.indexOf(this.state.fileToDisplay);
 
             return (
@@ -229,16 +222,6 @@ export default class Board extends React.Component {
                     <PDFCanvas route={selectRoutes[num]}/>
                 </div>
             )
-            // console.log(allRoutes[this.state.fileToDisplay]);
-            // return (
-            //     <div className="wrapper">
-            //         <button className="back" onClick={this.handleClick}>Go Back</button>
-            //         <h1>{allRoutes[this.state.fileToDisplay].name}</h1>
-            //         <PDFCanvas route={allRoutes[this.state.fileToDisplay]}/>
-            //     </div>
-            // )
-            //implement later
-            //<GalleryTimeTable route={allRoutes[this.state.fileToDisplay]}/>
         }
     }
 
