@@ -1,5 +1,14 @@
+body {
+  background-image: url('/src/img/borgerhout-1.png');
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+
 .App {
-  text-align: center;
+  justify-content: center;
+  display: flex;
 }
 
 .App-logo {
@@ -11,6 +20,12 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.back {
+  background-color: white;
+  border-color: rgb(65, 11, 202);
+  color: rgb(65, 11, 202);
 }
 
 .App-header {
@@ -37,17 +52,26 @@
   }
 }
 
-body {
-  margin: 40px;
-}
-
 .wrapper {
   text-align: left;
+  margin-top: 20px;
+  padding: 10%;
+  border-color: rgb(65, 11, 202);
+  border-style: solid;
+  border-width: thick;
+  height: auto;
+  background-color: white;
+  display: inline-table;
 }
 
 .wrapper .routes-list {
   margin-left: -50px;
   display: grid;
+}
+
+
+.react-pdf__Document {
+  pointer-events: none;
 }
 
 .wrapper .routes-list ol {
